@@ -1,6 +1,5 @@
 function replaceContent(movie, part){
   const item = document.getElementById(part);
-  // item.remove("ul");
   while (item.firstChild) item.removeChild(item.firstChild);
   console.log(item);
   const list = document.createElement("ul");
@@ -26,9 +25,10 @@ function replace(movie){
   replaceContent(movie, "reviews");
 }
 
+replace(movies.Titanic);
+
 document.addEventListener("DOMContentLoaded", (e) => {
   ["Titanic", "Terminator 2"].forEach(movie=>document.getElementById(movie).addEventListener("click", ()=>{
     replace(movies[movie]);
   }))
-  replace(movies.Titanic);
 });
