@@ -1,7 +1,7 @@
 function replaceContent(movie, part){
   const item = document.getElementById(part);
   // item.remove("ul");
-  // while (item.firstChild) item.remove(item.firstChild);
+  while (item.firstChild) item.removeChild(item.firstChild);
   console.log(item);
   const list = document.createElement("ul");
   movie[part].forEach(val => {
