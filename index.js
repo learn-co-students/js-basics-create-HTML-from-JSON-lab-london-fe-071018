@@ -1,4 +1,34 @@
-document.addEventListener("DOMContentloaded", (e) => {
-  // invoking a function here will make sure it happens on page load
-  // your code here
+function replaceContent(movie, part){
+  const item = document.getElementById(part);
+  // item.remove("ul");
+  // while (item.firstChild) item.remove(item.firstChild);
+  console.log(item);
+  const list = document.createElement("ul");
+  movie[part].forEach(val => {
+    const listItem = document.createElement("li");
+    const itemAndValue = Object.keys(val).forEach(key => {
+      listItem.innerHTML += `${key}: ${val[key]} `;
+    })
+    list.appendChild(listItem);
+  })
+  item.appendChild(list);
+}
+
+function replace(movie){
+  const mainTitle = document.getElementsByTagName("title")[0];
+  mainTitle.innerHTML = movie.title;
+  ["title", "director", "genre", "filmRating", "description", "audienceScore"].forEach(info=>{
+    const item = document.getElementById(info);
+    item.innerHTML = movie[info];
+  })
+  document.getElementById("poster").src=movie.poster;
+  replaceContent(movie, "cast");
+  replaceContent(movie, "reviews");
+}
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  ["Titanic", "Terminator 2"].forEach(movie=>document.getElementById(movie).addEventListener("click", ()=>{
+    replace(movies[movie]);
+  }))
+  replace(movies.Titanic);
 });
