@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", e => {
         document.getElementById(el).innerText=movies[movieName][el];
       }
     }
+
   }
+  plugJson("Titanic");
   document.getElementById("Titanic").addEventListener("click", e1 =>{
     plugJson("Titanic");
   })
